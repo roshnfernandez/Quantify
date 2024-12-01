@@ -1,0 +1,14 @@
+{
+    "backgroundColor" : "#212121",
+    "cardBackgroundColor" : "#2f2f2f",
+    "textColor" : "#ececec",
+    "secondaryTextColor" : "#999999",
+    "boxShadow" : {
+        "md" : "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+    },
+    "borderRadius" : {
+        "small" : "4px",
+        "md" : "10px",
+        "large" : "16px"
+    } 
+}
