@@ -1,17 +1,22 @@
 import { useContext, createContext, useReducer } from "react"
 import PropType from "prop-types"
+import { Api } from "./api";
 
 //conext object
 const globalState = createContext();
 
 //Initial context(Global state)
 
-const initialState = {};
+const initialState = {
+    file : null,
+    api : new Api()
+};
 
 //Reducer Function
 //actionObject will hold the new value and the key in the stateObject that should be updated
 function reducer(stateObject, actionObject){
     switch (actionObject.type){
+        case "FILE" : return ({...stateObject, file : actionObject.value});
         default: throw new Error("Unhandled action type : " + actionObject.type);
     }
 }
@@ -23,7 +28,7 @@ function ContextProvider({children}){
     //It is basically the reducer method where the stateObject prop is the current state that is passed by the useReducer hook
     //The action object is passed by the dispatch method like dispatch(actionObject)
 
-    const {state, dispatch} = useReducer(initialState, reducer);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return <globalState.Provider value={[state, dispatch]}>{children}</globalState.Provider>
 }

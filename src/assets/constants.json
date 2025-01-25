@@ -10,5 +10,9 @@
         "small" : "4px",
         "md" : "10px",
         "large" : "16px"
-    } 
+    } ,
+    "apiHost":"http://localhost:8088",
+    "objectTypes" : {
+        "file" : "FILE"
+    }
 }
