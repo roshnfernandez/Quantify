@@ -13,6 +13,9 @@
     } ,
     "apiHost":"http://localhost:8088",
     "objectTypes" : {
-        "file" : "FILE"
+        "file" : "FILE",
+        "loading" : "LOADING",
+        "axesParam" : "AXES_PARAM",
+        "graphComp" : "GRAPH_COMPONENT"
     }
 }

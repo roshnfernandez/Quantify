@@ -1,4 +1,4 @@
-import { Button, Card, Icon, Input, styled } from '@mui/material'
+import { Button, Card, styled } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { useEffect, useState } from 'react'
 import applicationConstants from '../../assets/constants.json'
@@ -48,19 +48,25 @@ const VisuallyHiddenInput = styled('input')({
 export const FileUploadPage = () => {
 
     const [title, setTitle] = useState('⚪');
+    const [typeError,setTypeError] = useState('');
     const titleStr = "Please Upload Your File to Continue!";
     const [state, dispatch] = useGlobalState();
-    const {api} = state;
+    const {api, showLoader} = state;
 
     const handleFileUpload = (event) => {
         dispatch(new ActionObject(applicationConstants.objectTypes.file, event.target.files[0]));
+        dispatch(new ActionObject(applicationConstants.objectTypes.loading, true));
         const formData = new FormData();
         formData.append("file",event.target.files[0]);
-        api.postFile(formData);
+        api.postFile(formData,getResp);
+    }
+
+    const getResp = (data) =>{
+        dispatch(new ActionObject(applicationConstants.objectTypes.axesParam, data));
+        dispatch(new ActionObject(applicationConstants.objectTypes.loading, false));
     }
 
     const handleFileDrag = (file) => {
-        console.log(file);
         dispatch(new ActionObject(applicationConstants.objectTypes.file, file));
     }
 
@@ -93,6 +99,10 @@ export const FileUploadPage = () => {
         }, 200)
     }
 
+    const handleTypeError = (err) =>{
+        setTypeError("Invalid File");
+    }
+
     useEffect(() => {
         setTitle('⚪');
         setTimeout(
@@ -107,7 +117,11 @@ export const FileUploadPage = () => {
                     {title}
                 </Typography>
                 <div style={searchBoxStyle}>
-                    <FileUploader onDrop={handleFileDrag}>
+                    <FileUploader 
+                        onDrop={handleFileDrag}
+                        types={['CSV','XLSX']}
+                        onTypeError = {handleTypeError}
+                        >
                         <div onClick={maskOnClick}>
                             <div style={searchBoxContentStyle}><UploadFileIcon fontSize='large' /></div>
                             <div style={{ ...searchBoxContentStyle, fontSize: "15px", marginTop: "2px" }}>Drag and Drop your CSV File here</div>
@@ -123,12 +137,13 @@ export const FileUploadPage = () => {
                             <VisuallyHiddenInput
                                 type="file"
                                 onChange={handleFileUpload}
+                                accept=".csv,.xlsx"
                                 multiple
                             />
                         </Button>
                     </div>
                 </div>
-                <div>{state.file == null ? "-" : state.file.name}</div>
+                <div>{(typeError != null && typeError.length > 0) && this.typeError}</div>
             </Card>
         </div>
     );

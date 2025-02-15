@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Chart } from 'react-google-charts';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,6 +8,8 @@ import {BrowserRouter} from 'react-router';
 import { ContextProvider } from './context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+window.React = React;
+window.Chart = Chart
 root.render(
   <BrowserRouter>
     <ContextProvider>

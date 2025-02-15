@@ -9,7 +9,10 @@ const globalState = createContext();
 
 const initialState = {
     file : null,
-    api : new Api()
+    api : new Api(),
+    showLoader : false,
+    axesParam : null,
+    GraphComponent : null,
 };
 
 //Reducer Function
@@ -17,6 +20,10 @@ const initialState = {
 function reducer(stateObject, actionObject){
     switch (actionObject.type){
         case "FILE" : return ({...stateObject, file : actionObject.value});
+        case "LOADING" : return({...stateObject, showLoader : actionObject.value});
+        case "AXES_PARAM" : return({...stateObject, axesParam : actionObject.value});
+        case "GRAPH_COMPONENT" : console.log(actionObject.value);
+        return({...stateObject, GraphComponent : actionObject.value});
         default: throw new Error("Unhandled action type : " + actionObject.type);
     }
 }
