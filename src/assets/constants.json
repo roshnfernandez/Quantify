@@ -3,6 +3,20 @@
     "cardBackgroundColor" : "#2f2f2f",
     "textColor" : "#ececec",
     "secondaryTextColor" : "#999999",
+    "menuColors" : {
+        "menuItemColor" : "#999999",
+        "menuItemTextColor" : "#212121",
+        "menuColor" : "#2f2f2f",
+        "menuTextColor" : "#ececec",
+        "menuBorderColor" : "#212121"
+    },
+    "input" : {
+        "borderColor" : "#898ea5",
+        "hoverBorderColor" : "#ececec",
+        "focusBorderColor" : "#90caf9",
+        "labelColor" : "#ececec",
+        "focusLabelColor" : "#90caf9"
+    },
     "boxShadow" : {
         "md" : "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
     },

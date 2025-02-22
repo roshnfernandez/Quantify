@@ -3,8 +3,6 @@ import { MenuBar } from '../Menu';
 
 const applicationStyle = {
     height: "100vh",
-    backgroundColor : applicationValues.backgroundColor,
-    color: applicationValues.textColor,
     padding : "0px",
     margin : "0px"
 }

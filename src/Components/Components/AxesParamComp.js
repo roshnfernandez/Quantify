@@ -22,11 +22,11 @@ export const AxesParamSelector = () => {
     }
 
     const getXAxes = () => {
-        return graphParam.type != null ? axesParam[graphParam.type]['x-axis'] : [];
+        return graphParam.type != null ? axesParam[graphParam.type]['xAxis'] : [];
     }
 
     const getYAxes = () => {
-        return graphParam.type != null ? axesParam[graphParam.type]['y-axis'] : [];
+        return graphParam.type != null ? axesParam[graphParam.type]['yAxis'] : [];
     }
 
     const handleGraphTypeChange = (event) => {

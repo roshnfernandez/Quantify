@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router';
 import { ContextProvider } from './context';
+import applicationValues from '../src/assets/constants.json'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 window.React = React;
@@ -13,7 +14,7 @@ window.Chart = Chart
 root.render(
   <BrowserRouter>
     <ContextProvider>
-      <App />
+      <App/>
     </ContextProvider>
   </BrowserRouter>
 );
